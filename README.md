@@ -3,6 +3,7 @@
 #### Prerequisites
 
 `$ brew install node` 
+`$ npm install` 
 
 #### Node.js & Typescript Setup
 
