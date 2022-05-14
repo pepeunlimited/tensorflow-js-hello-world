@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@tensorflow/tfjs-node": "3.17.0"
+  },
+  "devDependencies": {
+    "typescript": "4.6.4",
+    "eslint": "7.32.0",
+    "prettier": "2.4.1"
+  },
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "start": "node .",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"tests/*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+  }
+}
