@@ -1,5 +1,9 @@
 # tensorflow-js-hello-world
 
+#### Prerequisites
+
+`$ brew install node` 
+
 #### Node.js & Typescript Setup
 
 `$ npm install @tensorflow/tfjs-node`  
