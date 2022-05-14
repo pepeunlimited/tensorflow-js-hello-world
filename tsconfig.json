@@ -4,7 +4,7 @@
     "lib": ["es2018"],
     "module": "commonjs",
     "strict": true,
-    "outDir": "build",
+    "outDir": "dist",
     "skipLibCheck": true,
     "experimentalDecorators": true
   },
