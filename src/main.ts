@@ -22,8 +22,7 @@ const main = async (): Promise<void> => {
   await model.fit(xs, ys, {
     epochs: 250,
     callbacks: {
-      onEpochEnd: (epoch: number, log: Logs|undefined) => {
-        
+      onEpochEnd: (epoch: number, log: Logs | undefined) => {
         console.log(`Epoch ${epoch}: loss = ${log?.loss}`)
       },
     },
