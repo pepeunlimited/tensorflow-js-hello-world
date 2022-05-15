@@ -4,18 +4,18 @@ Simple hello-world example for tensorflow-js
 
 ## Prerequisites
 
-1. Install node  
+1. Clone project  
+`$ git clone git@github.com:pepeunlimited/tensorflow-js-hello-world.git`  
+2. Install node  
 `$ brew install node`  
-2. Install install node dependencies  
+3. Install install node dependencies  
 `$ npm install` 
 
 ## Usage
 
-1. Clone project  
-`$ git clone git@github.com:pepeunlimited/tensorflow-js-hello-world.git`  
-2. Build project  
+1. Build project  
 `$ npm run build`  
-3. Run project  
+2. Run project  
 `$ npm run start` 
 
 ## Node.js & Typescript Setup
