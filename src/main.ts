@@ -1,6 +1,7 @@
 import * as tf from '@tensorflow/tfjs-node'
+import { Logs } from '@tensorflow/tfjs-layers'
 
-const run = async (): Promise<void> => {
+const main = async (): Promise<void> => {
   // create simple model
   const model = tf.sequential()
   model.add(
@@ -21,11 +22,12 @@ const run = async (): Promise<void> => {
   await model.fit(xs, ys, {
     epochs: 250,
     callbacks: {
-      onEpochEnd: (epoch: number, log: any) => {
-        console.log(`Epoch ${epoch}: loss = ${log.loss}`)
+      onEpochEnd: (epoch: number, log: Logs|undefined) => {
+        
+        console.log(`Epoch ${epoch}: loss = ${log?.loss}`)
       },
     },
   })
 }
 
-run()
+main()
