@@ -10,8 +10,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node .",
-    "test": "mocha -r ts-node/register tests/**/*.test.ts",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"tests/*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+    "start": "node ."
   }
 }
