@@ -2,16 +2,16 @@
 
 ## Prerequisites
 
-1. Install node
+1. Install node  
 `$ brew install node`  
-2. Install install node dependencies
+2. Install install node dependencies  
 `$ npm install` 
 
 ## Usage
 
-1. Build project
+1. Build project  
 `$ npm run build`  
-2. Run project
+2. Run project  
 `$ npm run start` 
 
 ## Node.js & Typescript Setup
