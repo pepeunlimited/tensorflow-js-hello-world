@@ -1,5 +1,7 @@
 ## tensorflow-js-hello-world
 
+Simple hello-world example for tensorflow-js
+
 ## Prerequisites
 
 1. Install node  
