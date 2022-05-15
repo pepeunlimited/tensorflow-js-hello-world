@@ -11,9 +11,11 @@ Simple hello-world example for tensorflow-js
 
 ## Usage
 
-1. Build project  
+1. Clone project  
+`$ git clone git@github.com:pepeunlimited/tensorflow-js-hello-world.git`  
+2. Build project  
 `$ npm run build`  
-2. Run project  
+3. Run project  
 `$ npm run start` 
 
 ## Node.js & Typescript Setup
