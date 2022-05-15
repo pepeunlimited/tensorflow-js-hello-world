@@ -40,7 +40,14 @@ const main = async (): Promise<void> => {
   // By default, tf.Tensors will have a float32 dtype.
   // tf.Tensors can also be created with bool, int32, complex64, and string dtypes:
   // const xs = tf.tensor2d([1, 2, 3, 4, 5, 6], [1, 2], 'int32')
+  //
+  // TensorFlow.js also provides a set of convenience methods for creating random tensors,
+  // tensors filled with a particular value, tensors from HTMLImageElements,
+  // and many more which you can find:
+  // @see https://js.tensorflow.org/api/latest/#Tensors-Creation
+
   // Train the model using the data.
+
   await model.fit(xs, ys, {
     epochs: 250,
     callbacks: {
