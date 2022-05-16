@@ -31,10 +31,18 @@ const main = async () => {
     // but we put this note here because you will likely come across these dual uses of the term).
     //
     // A tf.Tensor can be created from an array with the tf.tensor() method:
-    const xs = tf.tensor2d([-3, 0, 1, 2, 3, 4], [6, 1]);
+    const xs = tf.tensor2d([1, 2, 3, 4, 5, 6], [6, 1]);
     const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1]);
     xs.print();
     ys.print();
+    // By default, tf.Tensors will have a float32 dtype.
+    // tf.Tensors can also be created with bool, int32, complex64, and string dtypes:
+    // const xs = tf.tensor2d([1, 2, 3, 4, 5, 6], [1, 2], 'int32')
+    //
+    // TensorFlow.js also provides a set of convenience methods for creating random tensors,
+    // tensors filled with a particular value, tensors from HTMLImageElements,
+    // and many more which you can find:
+    // @see https://js.tensorflow.org/api/latest/#Tensors-Creation
     // Train the model using the data.
     await model.fit(xs, ys, {
         epochs: 250,

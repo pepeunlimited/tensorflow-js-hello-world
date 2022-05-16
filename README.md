@@ -27,5 +27,6 @@ Simple hello-world example for tensorflow-js
 
 [`TensorFlow.js`](https://www.tensorflow.org/js)  
 [`tfjs-examples`](https://github.com/tensorflow/tfjs-examples)  
+[`pretrained-models-for-tensorflow.js`](https://github.com/tensorflow/tfjs-models)  
 [`flow-error-icu4c-not-loaded.md`](https://gist.github.com/berkedel/d1fc6d13651c16002f64653096d1fded)  
 [`Airbnb JavaScript Style Guide() {`](https://github.com/airbnb/javascript)  
