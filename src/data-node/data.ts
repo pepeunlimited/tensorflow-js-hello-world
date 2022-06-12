@@ -2,9 +2,9 @@ import * as tf from '@tensorflow/tfjs-node'
 
 type XY = {
   // feature
-  xs: number,
+  xs: number
   // label
-  ys: number 
+  ys: number
 }
 
 type Data = {
@@ -33,16 +33,16 @@ const DatasetV1 = (): Data => {
   const data1: XY[] = [
     {
       xs: 1,
-      ys: 1
+      ys: 1,
     },
     {
       xs: 4,
-      ys: 2
-    }
+      ys: 2,
+    },
   ]
   const dataset = tf.data.array(data1)
   return {
-    dataset: dataset.map(row => {
+    dataset: dataset.map((row) => {
       console.log(`dataset.row=${JSON.stringify(row)}`)
       const xy: XY = row as XY
       return { xs: [xy.xs], ys: [xy.ys] }
