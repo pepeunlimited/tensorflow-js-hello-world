@@ -8,7 +8,7 @@ const Run = async (): Promise<void> => {
   
   const trainBatches = data.dataset.batch(2)
   await model.fitDataset(trainBatches, {
-    epochs: 100
+    epochs: 4
   })
   // read more about input and output streams:
   // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md

@@ -8,7 +8,7 @@ const Run = async () => {
     const model = (0, model_1.CreateModel)([data.numberOfColumns]);
     const trainBatches = data.dataset.batch(2);
     await model.fitDataset(trainBatches, {
-        epochs: 100
+        epochs: 4
     });
     // read more about input and output streams:
     // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md
