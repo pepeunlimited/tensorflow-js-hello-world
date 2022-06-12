@@ -1,6 +1,6 @@
 import * as tf from '@tensorflow/tfjs-node'
 
-type Human = {
+type XY = {
   // feature
   xs: number,
   // label
@@ -30,7 +30,7 @@ const DatasetV1 = (): Data => {
   //  const data: tf.TensorContainer[] = [
   //    1, 2, 3
   //  ]
-  const data1: Human[] = [
+  const data1: XY[] = [
     {
       xs: 1,
       ys: 1
@@ -44,8 +44,8 @@ const DatasetV1 = (): Data => {
   return {
     dataset: dataset.map(row => {
       console.log(`dataset.row=${JSON.stringify(row)}`)
-      const human: Human = row as Human
-      return { xs: [human.xs], ys: [human.ys] }
+      const xy: XY = row as XY
+      return { xs: [xy.xs], ys: [xy.ys] }
     }),
     numberOfColumns: 1, // @see data-node/model.ts inputShape & units
   }
