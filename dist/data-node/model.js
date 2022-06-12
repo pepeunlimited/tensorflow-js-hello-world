@@ -5,8 +5,8 @@ const tf = require("@tensorflow/tfjs-node");
 const CreateModel = (inputShape) => {
     const model = tf.sequential();
     model.add(tf.layers.dense({
-        inputShape: [1],
-        units: 2,
+        inputShape: inputShape,
+        units: 1,
     }));
     model.compile({
         loss: 'meanSquaredError',

@@ -5,8 +5,8 @@ const CreateModel = (inputShape: Shape): Sequential => {
   const model = tf.sequential()
   model.add(
     tf.layers.dense({
-      inputShape: [1],
-      units: 2,
+      inputShape: inputShape, // @see data-note/train.ts CreateModel & data-node/data.ts (numberOfColumns)
+      units: 1,
     })
   )
   model.compile({

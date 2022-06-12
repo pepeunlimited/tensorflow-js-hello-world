@@ -26,8 +26,8 @@ const DatasetV1 = () => {
             ys: 1
         },
         {
-            xs: 2,
-            ys: 1
+            xs: 4,
+            ys: 2
         }
     ];
     const dataset = tf.data.array(data1);
@@ -37,7 +37,7 @@ const DatasetV1 = () => {
             const human = row;
             return { xs: [human.xs], ys: [human.ys] };
         }),
-        numberOfColumns: 1,
+        numberOfColumns: 1, // @see data-node/model.ts inputShape & units
     };
 };
 exports.DatasetV1 = DatasetV1;
