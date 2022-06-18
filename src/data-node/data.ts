@@ -1,9 +1,11 @@
 import * as tf from '@tensorflow/tfjs-node'
 
 type XY = {
-  // feature
+  // sex of the given object (feature)
+  // male    = 0
+  // female  = 1 
   xs: number
-  // label
+  // age of the given object (label)
   ys: number
 }
 
@@ -13,7 +15,7 @@ type Data = {
 }
 
 const DatasetV1 = (): Data => {
-  //const dataset: tf.TensorContainer[] = [names, ages, weight]
+  // const dataset: tf.TensorContainer[] = [sex, ages]
   // model.fitDataset expects are a Dataset,
   // each element inside this dataset is
   // a tuple of two items:
@@ -24,20 +26,21 @@ const DatasetV1 = (): Data => {
   // ys: -> yVal -> convertedLabel
   //
   // {xs: convertedFeatures, ys: convertedLabel}
-  //const names: any = [{ xs: "Simo", ys: "Name" }]
-  //const ages = tf.tensor1d([32, 12, 29], 'int32')
-  //const weight = tf.tensor1d([70, 2, 50], 'float32')
-  //  const data: tf.TensorContainer[] = [
-  //    1, 2, 3
-  //  ]
+  // const data: tf.TensorContainer[] = [
+  //   1, 2, 3
+  // ]
   const data1: XY[] = [
     {
       xs: 1,
-      ys: 1,
+      ys: 58,
     },
     {
-      xs: 4,
-      ys: 2,
+      xs: 1,
+      ys: 88,
+    },
+    {
+      xs: 0,
+      ys: 44,
     },
   ]
   const dataset = tf.data.array(data1)

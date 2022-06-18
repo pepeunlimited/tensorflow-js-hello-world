@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatasetV1 = void 0;
 const tf = require("@tensorflow/tfjs-node");
 const DatasetV1 = () => {
-    //const dataset: tf.TensorContainer[] = [names, ages, weight]
+    // const dataset: tf.TensorContainer[] = [sex, ages]
     // model.fitDataset expects are a Dataset,
     // each element inside this dataset is
     // a tuple of two items:
@@ -14,28 +14,29 @@ const DatasetV1 = () => {
     // ys: -> yVal -> convertedLabel
     //
     // {xs: convertedFeatures, ys: convertedLabel}
-    //const names: any = [{ xs: "Simo", ys: "Name" }]
-    //const ages = tf.tensor1d([32, 12, 29], 'int32')
-    //const weight = tf.tensor1d([70, 2, 50], 'float32')
-    //  const data: tf.TensorContainer[] = [
-    //    1, 2, 3
-    //  ]
+    // const data: tf.TensorContainer[] = [
+    //   1, 2, 3
+    // ]
     const data1 = [
         {
             xs: 1,
-            ys: 1
+            ys: 58,
         },
         {
-            xs: 4,
-            ys: 2
-        }
+            xs: 1,
+            ys: 88,
+        },
+        {
+            xs: 0,
+            ys: 44,
+        },
     ];
     const dataset = tf.data.array(data1);
     return {
-        dataset: dataset.map(row => {
+        dataset: dataset.map((row) => {
             console.log(`dataset.row=${JSON.stringify(row)}`);
-            const human = row;
-            return { xs: [human.xs], ys: [human.ys] };
+            const xy = row;
+            return { xs: [xy.xs], ys: [xy.ys] };
         }),
         numberOfColumns: 1, // @see data-node/model.ts inputShape & units
     };
