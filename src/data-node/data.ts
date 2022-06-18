@@ -43,7 +43,7 @@ const DatasetV1 = (): Data => {
       ys: 44,
     },
   ]
-  const dataset = tf.data.array(data1)
+  const dataset: tf.data.Dataset<XY> = tf.data.array(data1)
   return {
     dataset: dataset.map((row) => {
       console.log(`dataset.row=${JSON.stringify(row)}`)
