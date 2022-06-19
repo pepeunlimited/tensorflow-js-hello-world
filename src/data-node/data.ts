@@ -113,4 +113,4 @@ const DatasetV1 = (): Data => {
   }
 }
 
-export { DatasetV1, Data }
+export { DatasetV1, Data, Human, Sex }
