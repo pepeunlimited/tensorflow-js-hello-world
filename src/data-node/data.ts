@@ -56,7 +56,7 @@ const DatasetV1 = (): Data => {
   //
   // const xs = Object.fromEntries(['age', 'weight', 'height'].map(k => [k, human[k as keyof typeof human]]))
 
-  const data2: Human[] = [
+  const data: Human[] = [
     {
       sex: 'M',
       age: 30,
@@ -77,7 +77,7 @@ const DatasetV1 = (): Data => {
     },
   ]
 
-  const dataset: tf.data.Dataset<Human> = tf.data.array(data2)
+  const dataset: tf.data.Dataset<Human> = tf.data.array(data)
   return {
     dataset: dataset.map((row) => {
       console.log(`dataset.row=${JSON.stringify(row)}`)
