@@ -29,6 +29,13 @@ const DatasetV1 = (): Data => {
   // const data: tf.TensorContainer[] = [
   //   1, 2, 3
   // ]
+  // 
+  // @see 
+  //  
+  //  switch (rawFeatures[key]) {
+  //  default:
+  //  return Number(rawFeatures[key]); <- see this one
+  //
   const data1: XY[] = [
     {
       xs: 1,
