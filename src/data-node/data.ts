@@ -37,76 +37,120 @@ const DatasetV1 = (): Data => {
   //   1, 2, 3
   // ]
   //
-  // const xs = Object.keys(human).map((key) => {
-  // const value = human[key as keyof typeof human]
-  // switch (key) {
-  // case 'sex':
-  // switch (value) {
-  // case 'M':
-  // return 0
-  // case 'F':
-  // return 1
-  // default:
-  // return -1
-  // }
-  // default:
-  // return value
-  // }
-  // })
-  //
   // const xs = Object.fromEntries(['age', 'weight', 'height'].map(k => [k, human[k as keyof typeof human]]))
 
   const data: Human[] = [
     {
       sex: 'M',
-      age: 30,
+      age: 33,
       weight: 70,
       height: 180,
     },
     {
-      sex: 'F',
-      age: 28,
-      weight: 60,
-      height: 179,
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
     },
     {
-      sex: 'F',
-      age: 25,
-      weight: 50,
-      height: 169,
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
+    },
+    {
+      sex: 'M',
+      age: 33,
+      weight: 70,
+      height: 180,
     },
   ]
 
   const dataset: tf.data.Dataset<Human> = tf.data.array(data)
   return {
     dataset: dataset.map((row) => {
-      console.log(`dataset.row=${JSON.stringify(row)}`)
       const human: Human = row as Human
-      
+
       // NOTICE:
       // with tf.data.csv you should use for FEATURE(xs) and LABEL(ys)
-      // const xs = row['xs'] 
+      // const xs = row['xs']
       // const ys = row['ys']
 
-      // filter sex out of the human row
+      // filter age out of the human row
       const xs = Object.keys(human)
-        .filter((k) => !k.includes('sex'))
-        .map((k) => human[k as keyof typeof human])
-      // filter sex in of the human row
-      const ys = Object.keys(human)
-        .filter((k) => k.includes('sex'))
+        .filter((k) => !k.includes('age'))
         .map((k) => {
+          const value = human[k as keyof typeof human]
           // typecast sex M(0) F(1)
-          const sex = human[k as keyof typeof human]
-          switch (sex) {
-            case 'M':
-              return 0
-            case 'F':
-              return 1
+          switch (k) {
+            case 'sex':
+              switch (value) {
+                case 'M':
+                  return 0
+                case 'F':
+                  return 1
+                default:
+                  return -1
+              }
             default:
-              return -1
+              return value
           }
         })
+
+      // filter age in of the human row
+      const ys = Object.keys(human)
+        .filter((k) => k.includes('age'))
+        .map((k) => human[k as keyof typeof human])
+
+      console.log(`dataset.row: ${JSON.stringify(row)}, xs: ${xs}, ys: ${ys}`)
       return { xs: xs, ys: ys }
     }),
     numberOfColumns: 3, // @see Data.numberOfColumns

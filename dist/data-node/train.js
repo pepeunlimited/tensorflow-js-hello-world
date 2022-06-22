@@ -1,15 +1,31 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Run = void 0;
+const tf = require("@tensorflow/tfjs-node");
 const data_1 = require("./data");
 const model_1 = require("./model");
 const Run = async () => {
     const data = (0, data_1.DatasetV1)();
     const model = (0, model_1.CreateModel)([data.numberOfColumns]);
-    const trainBatches = data.dataset.batch(3);
-    await model.fitDataset(trainBatches, {
+    const dataset = data.dataset.shuffle(6).batch(4);
+    const trainDataset = dataset.take(2);
+    const validationDataset = dataset.skip(2);
+    await model.fitDataset(trainDataset, {
         epochs: 100,
+        validationData: validationDataset
     });
+    // notice: model.save handlerOrURL includes file:// protocol
+    // without protocol tf throws: 'ValueError: Cannot find any save handlers for URL' expection
+    const handlerOrURL = 'file://src/data-node/model-v1';
+    // stream output
+    await model.save(handlerOrURL);
+    // stream input
+    const input = await tf.loadLayersModel(`${handlerOrURL}/model.json`);
+    // predicate using saved model
+    // @see https://stackoverflow.com/a/61369496/3913343
+    const result = input.predict(tf.tensor2d([[1, 8, 160]]));
+    console.log(`result: ${result.dataSync()}`);
+    // io-stream:
     // read more about input and output streams:
     // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md
 };

@@ -3,12 +3,21 @@ import { Sequential, Shape } from '@tensorflow/tfjs-node'
 
 const CreateModel = (inputShape: Shape): Sequential => {
   const model = tf.sequential()
+  //  multi-layer-perceptron-regression-model
   model.add(
     tf.layers.dense({
       inputShape: inputShape, // @see data-note/train.ts CreateModel & data-node/data.ts (numberOfColumns)
-      units: 1,
+      activation: 'sigmoid',
+      units: 50,
     })
   )
+  model.add(tf.layers.dense({
+    activation: 'sigmoid',
+    units: 50,
+  }))
+  model.add(tf.layers.dense({
+    units: 1,
+  }))
   model.compile({
     loss: 'meanSquaredError',
     optimizer: 'sgd',
