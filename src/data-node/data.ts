@@ -1,17 +1,5 @@
 import * as tf from '@tensorflow/tfjs-node'
-
-type Sex = 'M' | 'F'
-
-type Human = {
-  // sex of the given object (tf.label)
-  sex: Sex
-  // age of the given object (tf.feature)
-  age: number
-  // weight of the given object (tf.feature)
-  weight: number
-  // height of the given object (tf.feature)
-  height: number
-}
+import { source, Human } from './source'
 
 type Data = {
   dataset: tf.data.Dataset<tf.TensorContainer>
@@ -38,83 +26,7 @@ const DatasetV1 = (): Data => {
   // ]
   //
   // const xs = Object.fromEntries(['age', 'weight', 'height'].map(k => [k, human[k as keyof typeof human]]))
-
-  const data: Human[] = [
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-    {
-      sex: 'M',
-      age: 33,
-      weight: 70,
-      height: 180,
-    },
-  ]
-
-  const dataset: tf.data.Dataset<Human> = tf.data.array(data)
+  const dataset: tf.data.Dataset<Human> = tf.data.array(source)
   return {
     dataset: dataset.map((row) => {
       const human: Human = row as Human
@@ -157,4 +69,4 @@ const DatasetV1 = (): Data => {
   }
 }
 
-export { DatasetV1, Data, Human, Sex }
+export { DatasetV1, Data }
