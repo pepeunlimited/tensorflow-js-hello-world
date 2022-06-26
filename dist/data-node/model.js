@@ -4,7 +4,8 @@ exports.CreateModel = void 0;
 const tf = require("@tensorflow/tfjs-node");
 const CreateModel = (inputShape) => {
     const model = tf.sequential();
-    //  Multi Layer Perceptron Regression Model
+    // @see https://blog.tensorflow.org/2018/06/getting-started-with-tensorflowjs.html
+    // multi-layer-perceptron-regression-model
     model.add(tf.layers.dense({
         inputShape: inputShape,
         activation: 'sigmoid',

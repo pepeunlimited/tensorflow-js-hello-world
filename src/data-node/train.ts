@@ -10,24 +10,25 @@ const Run = async (): Promise<void> => {
   // batch:          4
   // take:           2
   // skip:           2
-  const dataset = data.dataset.shuffle(6).batch(4)
+  const dataset = data.dataset.shuffle(12).batch(4)
   const trainDataset = dataset.take(2)
   const validationDataset = dataset.skip(2)
-
+  // fit the dataset for tf
   await model.fitDataset(trainDataset, {
     epochs: 100,
-    validationData: validationDataset
+    validationData: validationDataset,
   })
-  
-  // Stream - Input Output
+  // stream - IOs - save & load models - native file system (node.js)
   //
-  // notice: model.save handlerOrURL includes file:// protocol
+  // notice: model.save pathOrIOHandler includes file:// protocol
   // without protocol tf throws: 'ValueError: Cannot find any save handlers for URL' expection
-  const handlerOrURL: string = 'file://src/data-node/model-v1'
+  const pathOrIOHandler: string = 'file://src/data-node/model-v1'
   // stream output
-  await model.save(handlerOrURL)
+  await model.save(pathOrIOHandler)
   // stream input
-  const input = await tf.loadLayersModel(`${handlerOrURL}/model.json`);
+  const input = await tf.loadLayersModel(`${pathOrIOHandler}/model.json`)
+  model.summary()
+  input.summary()
   // predicate using saved model
   // @see https://stackoverflow.com/a/61369496/3913343
   const result = input.predict(tf.tensor2d([[1, 8, 160]])) as tf.Tensor

@@ -3,7 +3,8 @@ import { Sequential, Shape } from '@tensorflow/tfjs-node'
 
 const CreateModel = (inputShape: Shape): Sequential => {
   const model = tf.sequential()
-  //  multi-layer-perceptron-regression-model
+  // @see https://blog.tensorflow.org/2018/06/getting-started-with-tensorflowjs.html
+  // multi-layer-perceptron-regression-model
   model.add(
     tf.layers.dense({
       inputShape: inputShape, // @see data-note/train.ts CreateModel & data-node/data.ts (numberOfColumns)

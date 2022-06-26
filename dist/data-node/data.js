@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DatasetV1 = void 0;
 const tf = require("@tensorflow/tfjs-node");
+const source_1 = require("./source");
 const DatasetV1 = () => {
     // const dataset: tf.TensorContainer[] = [sex, ages]
     // model.fitDataset expects are a Dataset,
@@ -19,81 +20,7 @@ const DatasetV1 = () => {
     // ]
     //
     // const xs = Object.fromEntries(['age', 'weight', 'height'].map(k => [k, human[k as keyof typeof human]]))
-    const data = [
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-        {
-            sex: 'M',
-            age: 33,
-            weight: 70,
-            height: 180,
-        },
-    ];
-    const dataset = tf.data.array(data);
+    const dataset = tf.data.array(source_1.source);
     return {
         dataset: dataset.map((row) => {
             const human = row;
