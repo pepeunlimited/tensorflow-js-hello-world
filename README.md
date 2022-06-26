@@ -1,5 +1,5 @@
-## tensorflow-js-hello-world
-----------------------------
+tensorflow-js-hello-world
+-------------------------
 
 Simple hello-world example for tensorflow-js
 
