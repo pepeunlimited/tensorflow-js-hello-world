@@ -1,15 +1,19 @@
 {
   "main": "dist/main.js",
   "dependencies": {
-    "@tensorflow/tfjs-node": "3.18.0"
+    "@tensorflow/tfjs-node": "3.18.0",
+    "ts-results": "3.3.0"
   },
   "devDependencies": {
     "eslint": "8.18.0",
+    "jest": "28.1.2",
+    "@types/jest": "28.1.2",
     "prettier": "2.7.1",
     "typescript": "4.7.4"
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ."
+    "start": "node .",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --env=node"
   }
 }
