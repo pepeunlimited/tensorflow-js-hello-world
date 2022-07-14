@@ -20,6 +20,8 @@ Usage
 `$ npm run build`  
 2. Run project  
 `$ npm run start` 
+3. Run test  
+`$ npm run test` 
 
 Node.js & Typescript Setup
 --------------------------
