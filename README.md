@@ -32,20 +32,20 @@ Node.js & Typescript Setup
 Dependencies
 ------------
 
-[`TensorFlow.js`](https://www.tensorflow.org/js)  
-[`ts-results`](https://github.com/vultix/ts-results)  
-    `rust` and `swift` like result check for `.success` and `.failure` cases.
+- [`TensorFlow.js`](https://www.tensorflow.org/js)  
+- [`ts-results`](https://github.com/vultix/ts-results)  
+  - `rust` and `swift` like result check for `.success` and `.failure` cases.
 
 devDependencies
 ---------------
 
-[`Jest`](https://github.com/facebook/jest)  
-    Used for testing  
-[`swc`](https://swc.rs/)  
-    I want to use ESM, so `speedy web compiler` is workaround until `jest` gives some kind support for ESM.  
-    [`jest.mock does not mock an ES module without Babel #10025`](https://github.com/facebook/jest/issues/10025)  
-    [`[Feature]: esm/cjs autodetection for TypeScript files #12800`](https://github.com/facebook/jest/issues/12800)  
-    [`Meta: Native support for ES Modules #9430`](https://github.com/facebook/jest/issues/9430)  
+- [`Jest`](https://github.com/facebook/jest)  
+  - Used for testing  
+- [`swc`](https://swc.rs/)  
+  - I want to use ESM, so `speedy web compiler` is workaround until `jest` gives some kind support for ESM.  
+    - [`jest.mock does not mock an ES module without Babel #10025`](https://github.com/facebook/jest/issues/10025)  
+    - [`[Feature]: esm/cjs autodetection for TypeScript files #12800`](https://github.com/facebook/jest/issues/12800)  
+    - [`Meta: Native support for ES Modules #9430`](https://github.com/facebook/jest/issues/9430)  
 
 Links
 -----
