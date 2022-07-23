@@ -1,4 +1,4 @@
-import { Run as DataNode_Run } from './data-node/train'
+import { Run as DataNode_Run } from './data-node/train.js'
 // import { Run as Graph_Run } from './tf_graph'
 // import { Run as HelloWorld_Run } from './tf_hello_world'
 

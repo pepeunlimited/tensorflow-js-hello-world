@@ -1,19 +1,23 @@
 {
   "main": "dist/main.js",
+  "type": "module",
   "dependencies": {
     "@tensorflow/tfjs-node": "3.18.0",
     "ts-results": "3.3.0"
   },
   "devDependencies": {
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.2.175",
+    "@swc/jest": "0.2.22",
+    "@types/jest": "^28.1.6",
     "eslint": "8.18.0",
-    "jest": "28.1.2",
-    "@types/jest": "28.1.2",
+    "jest": "28.1.3",
     "prettier": "2.7.1",
     "typescript": "4.7.4"
   },
   "scripts": {
     "build": "tsc",
     "start": "node .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --env=node"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   }
 }

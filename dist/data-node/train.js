@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Run = void 0;
-const tf = require("@tensorflow/tfjs-node");
-const data_1 = require("./data");
-const model_1 = require("./model");
+import * as tf from '@tensorflow/tfjs-node';
+import { DatasetV1 } from './data.js';
+import { CreateModel } from './model.js';
 const Run = async () => {
-    const data = (0, data_1.DatasetV1)();
-    const model = (0, model_1.CreateModel)([data.numberOfColumns]);
+    const data = DatasetV1();
+    const model = CreateModel([data.numberOfColumns]);
     // dataset.count:  12
     // shuffle: 12/2 = 6
     // batch:          4
@@ -39,4 +36,4 @@ const Run = async () => {
     // read more about input and output streams:
     // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md
 };
-exports.Run = Run;
+export { Run };

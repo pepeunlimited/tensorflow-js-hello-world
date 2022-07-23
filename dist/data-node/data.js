@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DatasetV1 = void 0;
-const tf = require("@tensorflow/tfjs-node");
-const source_1 = require("./source");
+import * as tf from '@tensorflow/tfjs-node';
+import { source } from './source.js';
 const DatasetV1 = () => {
     // const dataset: tf.TensorContainer[] = [sex, ages]
     // model.fitDataset expects are a Dataset,
@@ -20,7 +17,7 @@ const DatasetV1 = () => {
     // ]
     //
     // const xs = Object.fromEntries(['age', 'weight', 'height'].map(k => [k, human[k as keyof typeof human]]))
-    const dataset = tf.data.array(source_1.source);
+    const dataset = tf.data.array(source);
     return {
         dataset: dataset.map((row) => {
             const human = row;
@@ -58,4 +55,4 @@ const DatasetV1 = () => {
         numberOfColumns: 3, // @see Data.numberOfColumns
     };
 };
-exports.DatasetV1 = DatasetV1;
+export { DatasetV1 };

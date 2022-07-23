@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.source = void 0;
 const source = [
     {
         sex: 'M',
@@ -75,4 +72,4 @@ const source = [
         height: 180,
     },
 ];
-exports.source = source;
+export { source };

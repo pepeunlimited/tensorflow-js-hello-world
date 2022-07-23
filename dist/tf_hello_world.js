@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Run = void 0;
-const tf = require("@tensorflow/tfjs-node");
+import * as tf from '@tensorflow/tfjs-node';
 const Run = async () => {
     // create simple model
     const model = tf.sequential();
@@ -72,4 +69,4 @@ const Run = async () => {
         },
     });
 };
-exports.Run = Run;
+export { Run };

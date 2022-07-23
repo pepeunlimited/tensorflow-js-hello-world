@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const train_1 = require("./data-node/train");
+import { Run as DataNode_Run } from './data-node/train.js';
 // import { Run as Graph_Run } from './tf_graph'
 // import { Run as HelloWorld_Run } from './tf_hello_world'
 // execute the main function which is defined
@@ -11,6 +9,6 @@ const train_1 = require("./data-node/train");
 const main = async () => {
     //  HelloWorld_Run()
     //  Graph_Run()
-    (0, train_1.Run)();
+    DataNode_Run();
 };
 main();

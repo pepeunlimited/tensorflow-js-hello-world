@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateModel = void 0;
-const tf = require("@tensorflow/tfjs-node");
+import * as tf from '@tensorflow/tfjs-node';
 const CreateModel = (inputShape) => {
     const model = tf.sequential();
     // @see https://blog.tensorflow.org/2018/06/getting-started-with-tensorflowjs.html
@@ -24,4 +21,4 @@ const CreateModel = (inputShape) => {
     });
     return model;
 };
-exports.CreateModel = CreateModel;
+export { CreateModel };

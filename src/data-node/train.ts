@@ -1,6 +1,6 @@
 import * as tf from '@tensorflow/tfjs-node'
-import { DatasetV1 } from './data'
-import { CreateModel } from './model'
+import { DatasetV1 } from './data.js'
+import { CreateModel } from './model.js'
 
 const Run = async (): Promise<void> => {
   const data = DatasetV1()

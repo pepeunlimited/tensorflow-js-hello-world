@@ -1,5 +1,5 @@
 import * as tf from '@tensorflow/tfjs-node'
-import { source, Human } from './source'
+import { source, Human } from './source.js'
 
 type Data = {
   dataset: tf.data.Dataset<tf.TensorContainer>
