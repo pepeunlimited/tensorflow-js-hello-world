@@ -40,9 +40,9 @@ devDependencies
 ---------------
 
 - [`Jest`](https://github.com/facebook/jest)  
-  - Used for testing  
+  - Unit-test framework
 - [`swc`](https://swc.rs/)  
-  - I want to use ESM, so `speedy web compiler` is workaround until `jest` gives some kind support for ESM.  
+  - I wanted to use ESM, so `speedy web compiler` is workaround until `jest` gives some kind support for ESM.  
     - [`jest.mock does not mock an ES module without Babel #10025`](https://github.com/facebook/jest/issues/10025)  
     - [`[Feature]: esm/cjs autodetection for TypeScript files #12800`](https://github.com/facebook/jest/issues/12800)  
     - [`Meta: Native support for ES Modules #9430`](https://github.com/facebook/jest/issues/9430)  
