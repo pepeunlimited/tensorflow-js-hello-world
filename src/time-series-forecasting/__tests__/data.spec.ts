@@ -1,7 +1,12 @@
 
 // @see https://blog.logrocket.com/testing-typescript-apps-using-jest/
 
-import { fetchLocal } from "../data"
+import { readLocal, rmLocal } from "../data"
+import * as fs from 'node:fs/promises'
+
+// MARK: Utility functions for testing
+
+// MARK: Test cases for Data.ts
 
 describe('Data.ts', () => {
   beforeAll(() => {
@@ -10,9 +15,14 @@ describe('Data.ts', () => {
   afterAll(() => {
     // teardown ..
   })
-  describe('fetchLocal', () => {
+  describe('readLocal', () => {
+
+    beforeAll(async () => {
+      await rmLocal()       
+    })
+
     it('should be loaded', async () => {
-      await fetchLocal()
+      // await readLocal()
     })
   })
   describe('fetchExternal', () => {

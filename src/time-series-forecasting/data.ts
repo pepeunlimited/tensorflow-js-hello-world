@@ -1,6 +1,6 @@
-//import fetch from 'node-fetch'
-import { default as fetch } from 'node-fetch';
+import { default as fetch } from 'node-fetch'
 import * as fs from 'node:fs/promises'
+import { Ok, Err, Result } from 'ts-results'
 
 // filename for the weather csv data
 const csv: string = 'jena_climate_2009_2016.csv'
@@ -8,7 +8,7 @@ const csv: string = 'jena_climate_2009_2016.csv'
 // type for the JenaWeather
 type JenaWeather = {}
 
-type Error = 'CANT_FETCH_LOCAL_CSV' | 'CANT_FETCH_EXTERNAL_CSV'
+type Error = 'LOCAL_CSV_NOT_EXIST' | 'CANT_FETCH_EXTERNAL_CSV'
 
 // access for the external csv data
 const fetchExternal = async (): Promise<void> => {
@@ -20,7 +20,7 @@ const fetchExternal = async (): Promise<void> => {
 }
 
 // access the local csv data
-const fetchLocal = async (): Promise<void> => {
+const readLocal = async (): Promise<void> => {
   // path for local
   const path: string = `./${csv}`
 
@@ -34,11 +34,25 @@ const fetchLocal = async (): Promise<void> => {
   // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
 }
 
+// delete local file
+const rmLocal = async (): Promise<Result<void, Error>> => {
+  try {
+    // path for local
+    const path: string = `./${csv}`
+    // delete the file
+    await fs.rm(path)
+    return Ok.EMPTY
+  } catch (error) {
+    console.log(error)
+    return Err('LOCAL_CSV_NOT_EXIST')
+  }
+}
+
 const Dataset = async (): Promise<JenaWeather> => {
   // check if the .csv exists, if not download it from given URL
-  await fetchLocal()
+  await readLocal()
   await fetchExternal()
   return {}
 }
 
-export { JenaWeather, Dataset, fetchLocal, fetchExternal }
+export { JenaWeather, Dataset, readLocal, fetchExternal, rmLocal }
