@@ -3,7 +3,6 @@ import * as fsp from 'node:fs/promises'
 import * as fs from 'node:fs'
 
 import { Ok, Err, Result } from 'ts-results'
-import { Data } from '../data-node/data.js'
 
 // filename for the weather csv data
 const csv: string = 'jena_climate_2009_2016.csv'
@@ -43,7 +42,7 @@ const readLocal = async (): Promise<Result<string | Buffer, DataError>> => {
     if (err.code == 'ENOENT') {
       return Err('LOCAL_CSV_NOT_EXIST')
     }
-    console.log(`Unexpected issue at readLocal: ${err}`)
+    console.log(`❌ Unexpected issue at readLocal: ${err}`)
     return Err('UNKNOWN_LOCAL_CSV_ERROR')
   }
 }
@@ -63,7 +62,7 @@ const rmLocal = async (): Promise<Result<void, DataError>> => {
     if (err.code == 'ENOENT') {
       return Err('LOCAL_CSV_NOT_EXIST')
     }
-    console.log(`Unexpected issue at rmLocal: ${err}`)
+    console.log(`❌ Unexpected issue at rmLocal: ${err}`)
     return Err('UNKNOWN_LOCAL_CSV_ERROR')
   }
 }
@@ -81,7 +80,7 @@ const accessLocal = async (): Promise<Result<void, DataError>> => {
     if (err.code == 'ENOENT') {
       return Err('LOCAL_CSV_NOT_EXIST')
     }
-    console.log(`Unexpected issue at rmLocal: ${err}`)
+    console.log(`❌ Unexpected issue at accessLocal: ${err}`)
     return Err('UNKNOWN_LOCAL_CSV_ERROR')
   }
 }

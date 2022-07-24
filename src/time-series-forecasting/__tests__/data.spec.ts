@@ -7,7 +7,6 @@ import {
   csv_path,
   readLocal,
   rmLocal,
-  DataError,
   accessLocal,
 } from '../data'
 
