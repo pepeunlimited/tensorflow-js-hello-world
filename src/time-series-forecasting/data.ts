@@ -4,11 +4,16 @@ import { Ok, Err, Result } from 'ts-results'
 
 // filename for the weather csv data
 const csv: string = 'jena_climate_2009_2016.csv'
+// file path for the weather csv data
+const csv_path: string = '.'
 
 // type for the JenaWeather
 type JenaWeather = {}
 
-type Error = 'LOCAL_CSV_NOT_EXIST' | 'CANT_FETCH_EXTERNAL_CSV'
+type DataError =
+  | 'LOCAL_CSV_NOT_EXIST'
+  | 'UNKNOWN_LOCAL_CSV_ERROR'
+  | 'CANT_FETCH_EXTERNAL_CSV'
 
 // access for the external csv data
 const fetchExternal = async (): Promise<void> => {
@@ -20,32 +25,43 @@ const fetchExternal = async (): Promise<void> => {
 }
 
 // access the local csv data
-const readLocal = async (): Promise<void> => {
-  // path for local
-  const path: string = `./${csv}`
-
+const readLocal = async (): Promise<Result<string | Buffer, DataError>> => {
+  // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
   // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md
   // @see https://github.com/nodejs/node/blob/main/doc/api/fs.md#class-fswritestream
-
-  await fs.readFile(path, 'utf-8')
-
-  // const fetched = await fetch(path)
-
-  // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
+  try {
+    const file = await fs.readFile(`${csv_path}/${csv}`, 'utf-8')
+    return Ok(file)
+  } catch (error) {
+    // @see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/48281
+    // @see https://fettblog.eu/typescript-typing-catch-clauses
+    const err = error as NodeJS.ErrnoException
+    // @see https://nodejs.org/api/errors.html#class-systemerror
+    if (err.code == 'ENOENT') {
+      return Err('LOCAL_CSV_NOT_EXIST')
+    }
+    console.log(`Unexpected issue at readLocal: ${err}`)
+    return Err('UNKNOWN_LOCAL_CSV_ERROR')
+  }
 }
 
 // delete local file
-const rmLocal = async (): Promise<Result<void, Error>> => {
+const rmLocal = async (): Promise<Result<void, DataError>> => {
+  // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
   try {
-    // path for local
-    const path: string = `./${csv}`
     // delete the file
-    await fs.rm(path)
+    await fs.rm(`${csv_path}/${csv}`)
     return Ok.EMPTY
   } catch (error) {
-    const error 
-    console.log(error)
-    return Err('LOCAL_CSV_NOT_EXIST')
+    // @see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/48281
+    // @see https://fettblog.eu/typescript-typing-catch-clauses
+    const err = error as NodeJS.ErrnoException
+    // @see https://nodejs.org/api/errors.html#class-systemerror
+    if (err.code == 'ENOENT') {
+      return Err('LOCAL_CSV_NOT_EXIST')
+    }
+    console.log(`Unexpected issue at rmLocal: ${err}`)
+    return Err('UNKNOWN_LOCAL_CSV_ERROR')
   }
 }
 
