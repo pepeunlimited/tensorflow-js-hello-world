@@ -3,6 +3,7 @@ import * as fsp from 'node:fs/promises'
 import * as fs from 'node:fs'
 
 import { Ok, Err, Result } from 'ts-results'
+import { UnreachableCaseError } from './unreachable_case_error.js'
 
 // filename for the weather csv data
 const csv: string = 'jena_climate_2009_2016.csv'
@@ -13,8 +14,8 @@ const csv_path: string = '.'
 type JenaWeather = {}
 
 type DataError =
-  | 'LOCAL_CSV_NOT_EXIST'
-  | 'UNKNOWN_LOCAL_CSV_ERROR'
+  | 'CSV_ENOENT'
+  | 'CSV_EUNK'
   | 'CANT_FETCH_EXTERNAL_CSV'
 
 // access for the external csv data
@@ -40,10 +41,10 @@ const readLocal = async (): Promise<Result<string | Buffer, DataError>> => {
     const err = error as NodeJS.ErrnoException
     // @see https://nodejs.org/api/errors.html#class-systemerror
     if (err.code == 'ENOENT') {
-      return Err('LOCAL_CSV_NOT_EXIST')
+      return Err('CSV_ENOENT')
     }
     console.log(`❌ Unexpected issue at readLocal: ${err}`)
-    return Err('UNKNOWN_LOCAL_CSV_ERROR')
+    return Err('CSV_EUNK')
   }
 }
 
@@ -60,10 +61,10 @@ const rmLocal = async (): Promise<Result<void, DataError>> => {
     const err = error as NodeJS.ErrnoException
     // @see https://nodejs.org/api/errors.html#class-systemerror
     if (err.code == 'ENOENT') {
-      return Err('LOCAL_CSV_NOT_EXIST')
+      return Err('CSV_ENOENT')
     }
     console.log(`❌ Unexpected issue at rmLocal: ${err}`)
-    return Err('UNKNOWN_LOCAL_CSV_ERROR')
+    return Err('CSV_EUNK')
   }
 }
 
@@ -78,18 +79,26 @@ const accessLocal = async (): Promise<Result<void, DataError>> => {
     const err = error as NodeJS.ErrnoException
     // @see https://nodejs.org/api/errors.html#class-systemerror
     if (err.code == 'ENOENT') {
-      return Err('LOCAL_CSV_NOT_EXIST')
+      return Err('CSV_ENOENT')
     }
     console.log(`❌ Unexpected issue at accessLocal: ${err}`)
-    return Err('UNKNOWN_LOCAL_CSV_ERROR')
+    return Err('CSV_EUNK')
   }
 }
 
-const Dataset = async (): Promise<JenaWeather> => {
+const Dataset = async (): Promise<Result<string | Buffer, DataError>> => {
   // check if the .csv exists, if not download it from given URL
-  await readLocal()
-  await fetchExternal()
-  return {}
+  const r1 = await readLocal()
+  if (r1.ok) {
+    return Ok(r1.val)
+  }
+  switch (r1.val) {
+    case 'CSV_ENOENT':
+      // download .csv from the internet
+      return Ok('tmp')
+    default:
+      throw new UnreachableCaseError(r1.val)
+  }
 }
 
 export {
