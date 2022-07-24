@@ -72,4 +72,4 @@ const Dataset = async (): Promise<JenaWeather> => {
   return {}
 }
 
-export { JenaWeather, Dataset, readLocal, fetchExternal, rmLocal }
+export { JenaWeather, Dataset, readLocal, fetchExternal, rmLocal, csv, csv_path }
