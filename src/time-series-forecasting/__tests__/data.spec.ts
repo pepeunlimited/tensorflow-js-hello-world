@@ -1,24 +1,28 @@
 // @see https://blog.logrocket.com/testing-typescript-apps-using-jest/
 // @see https://jestjs.io/docs/api
 
-
 import * as fs from 'node:fs/promises'
-import { csv, csv_path, readLocal, rmLocal, DataError, accessLocal } from '../data'
+import {
+  csv,
+  csv_path,
+  readLocal,
+  rmLocal,
+  DataError,
+  accessLocal,
+} from '../data'
 
 // MARK: Utility functions for testing
 
 // MARK: Test cases for Data.ts
 
 describe('Data.ts', () => {
-  beforeAll(() => {
-    
-  })
+  beforeAll(() => {})
   afterAll(() => {
     // teardown ..
   })
   describe('readLocal', () => {
     beforeEach(async () => {
-      await rmLocal()  
+      await rmLocal()
     })
     it('should be loaded', async () => {
       // create tmp file for readLocal

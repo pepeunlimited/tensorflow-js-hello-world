@@ -74,7 +74,7 @@ const accessLocal = async (): Promise<Result<void, DataError>> => {
     await fsp.access(`${csv_path}/${csv}`, fs.constants.F_OK)
     return Ok.EMPTY
   } catch (error) {
-        // @see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/48281
+    // @see https://github.com/DefinitelyTyped/DefinitelyTyped/issues/48281
     // @see https://fettblog.eu/typescript-typing-catch-clauses
     const err = error as NodeJS.ErrnoException
     // @see https://nodejs.org/api/errors.html#class-systemerror
@@ -102,5 +102,5 @@ export {
   csv,
   csv_path,
   DataError,
-  accessLocal
+  accessLocal,
 }
