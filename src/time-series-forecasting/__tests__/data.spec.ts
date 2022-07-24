@@ -23,14 +23,14 @@ describe('Data.ts', () => {
     it('should be loaded', async () => {
       // create tmp file for readLocal
       await fs.writeFile(`${csv_path}/${csv}`, 'Hello, World!')
-      const result = await readLocal()
-      expect(result.ok).toBe(true)
+      const r1 = await readLocal()
+      expect(r1.ok).toBe(true)
     })
     it('should not be loaded', async () => {
       // create tmp file for readLocal
-      const result = await readLocal()
-      expect(result.err).toBe(true)
-      expect(result.val).toBe('LOCAL_CSV_NOT_EXIST')
+      const r1 = await readLocal()
+      expect(r1.err).toBe(true)
+      expect(r1.val).toBe('LOCAL_CSV_NOT_EXIST')
     })
   })
   describe('rmLocal', () => {
@@ -44,10 +44,9 @@ describe('Data.ts', () => {
       expect(r2.val).toBe('LOCAL_CSV_NOT_EXIST')
     })
     it('should not be deleted', async () => {
-      // create tmp file for readLocal
-      //const result = await readLocal()
-      //expect(result.err).toBe(true)
-      //console.log(result)
+      const r1 = await rmLocal()
+      expect(r1.err).toBe(true)
+      expect(r1.val).toBe('LOCAL_CSV_NOT_EXIST')
     })
   })
   describe('fetchExternal', () => {})
