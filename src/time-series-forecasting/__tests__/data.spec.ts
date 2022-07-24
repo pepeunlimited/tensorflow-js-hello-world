@@ -35,6 +35,9 @@ describe('Data.ts', () => {
       expect(r1.err).toBe(true)
       expect(r1.val).toBe('CSV_ENOENT')
     })
+    it('should be unexpected error', async () => {
+      // TODO: write mock
+    })
   })
   describe('rmLocal', () => {
     it('should be deleted', async () => {
@@ -50,6 +53,9 @@ describe('Data.ts', () => {
       const r1 = await rmLocal()
       expect(r1.err).toBe(true)
       expect(r1.val).toBe('CSV_ENOENT')
+    })
+    it('should be unexpected error', async () => {
+      // TODO: write mock
     })
   })
   describe('fetchExternal', () => {})
