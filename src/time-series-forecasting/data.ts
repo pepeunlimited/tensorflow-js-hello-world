@@ -43,6 +43,7 @@ const rmLocal = async (): Promise<Result<void, Error>> => {
     await fs.rm(path)
     return Ok.EMPTY
   } catch (error) {
+    const error 
     console.log(error)
     return Err('LOCAL_CSV_NOT_EXIST')
   }

@@ -44,7 +44,7 @@ devDependencies
 - [`Jest`](https://github.com/facebook/jest)  
   - Unit-test framework
 - [`swc.rs`](https://swc.rs/)  
-  - I wanted to use ESM, `speedy web compiler` is workaround until `jest` gives some kind support for ESM.  
+  - I wanted to use [`ECMAScript`](https://devblogs.microsoft.com/typescript/announcing-typescript-4-7-beta/#ecmascript-module-support-in-node-js), `speedy web compiler` is workaround until `jest` gives some kind support for [`ESM`](https://github.com/swc-project/jest#q--a).  
     - [`jest.mock does not mock an ES module without Babel #10025`](https://github.com/facebook/jest/issues/10025)  
     - [`[Feature]: esm/cjs autodetection for TypeScript files #12800`](https://github.com/facebook/jest/issues/12800)  
     - [`Meta: Native support for ES Modules #9430`](https://github.com/facebook/jest/issues/9430)  
