@@ -2,13 +2,7 @@
 // @see https://jestjs.io/docs/api
 
 import * as fs from 'node:fs/promises'
-import {
-  csv,
-  csv_path,
-  readLocal,
-  rmLocal,
-  accessLocal,
-} from '../data'
+import { csv, csv_path, readLocal, rmLocal, accessLocal } from '../data'
 
 // MARK: Utility functions for testing
 

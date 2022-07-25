@@ -13,7 +13,7 @@ const csv_path: string = '.'
 // type for the JenaWeather
 type JenaWeather = {}
 
-type CSVError = | 'CSV_ENOENT' | 'CSV_EUNK'
+type CSVError = 'CSV_ENOENT' | 'CSV_EUNK'
 
 type DatasetError = 'CANT_FETCH_EXTERNAL_CSV'
 

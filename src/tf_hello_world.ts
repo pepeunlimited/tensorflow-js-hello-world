@@ -8,7 +8,7 @@ const Run = async (): Promise<void> => {
     tf.layers.dense({
       units: 1,
       inputShape: [1],
-    })
+    }),
   )
   // Prepare the model for training: Specify the loss and the optimizer.
   model.compile({
@@ -62,7 +62,6 @@ const Run = async (): Promise<void> => {
   // Getting values from a Tensor
   // You can also get the values from a tf.Tensor using the
   // Tensor.array() or Tensor.data() methods:
-  
 
   // Train the model using the data.
   //
