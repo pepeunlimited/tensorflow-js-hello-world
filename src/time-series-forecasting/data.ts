@@ -13,10 +13,9 @@ const csv_path: string = '.'
 // type for the JenaWeather
 type JenaWeather = {}
 
-type DataError =
-  | 'CSV_ENOENT'
-  | 'CSV_EUNK'
-  | 'CANT_FETCH_EXTERNAL_CSV'
+type CSVError = | 'CSV_ENOENT' | 'CSV_EUNK'
+
+type DatasetError = 'CANT_FETCH_EXTERNAL_CSV'
 
 // access for the external csv data
 const fetchExternal = async (): Promise<void> => {
@@ -28,7 +27,7 @@ const fetchExternal = async (): Promise<void> => {
 }
 
 // access the local csv data
-const readLocal = async (): Promise<Result<string | Buffer, DataError>> => {
+const readLocal = async (): Promise<Result<string | Buffer, CSVError>> => {
   // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
   // @see https://github.com/nodejs/node/blob/master/doc/api/stream.md
   // @see https://github.com/nodejs/node/blob/main/doc/api/fs.md#class-fswritestream
@@ -49,7 +48,7 @@ const readLocal = async (): Promise<Result<string | Buffer, DataError>> => {
 }
 
 // delete the local csv data
-const rmLocal = async (): Promise<Result<void, DataError>> => {
+const rmLocal = async (): Promise<Result<void, CSVError>> => {
   // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
   try {
     // delete the file
@@ -69,7 +68,7 @@ const rmLocal = async (): Promise<Result<void, DataError>> => {
 }
 
 // access the local csv without opening it
-const accessLocal = async (): Promise<Result<void, DataError>> => {
+const accessLocal = async (): Promise<Result<void, CSVError>> => {
   try {
     await fsp.access(`${csv_path}/${csv}`, fs.constants.F_OK)
     return Ok.EMPTY
@@ -86,7 +85,7 @@ const accessLocal = async (): Promise<Result<void, DataError>> => {
   }
 }
 
-const Dataset = async (): Promise<Result<string | Buffer, DataError>> => {
+const Dataset = async (): Promise<Result<string | Buffer, CSVError>> => {
   // check if the .csv exists, if not download it from given URL
   const r1 = await readLocal()
   if (r1.ok) {
@@ -109,6 +108,6 @@ export {
   rmLocal,
   csv,
   csv_path,
-  DataError,
+  CSVError,
   accessLocal,
 }
