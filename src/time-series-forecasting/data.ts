@@ -22,7 +22,7 @@ const fetchExternal = async (): Promise<void> => {
   // url for the external download
   const endpointURL: string = `https://storage.googleapis.com/learnjs-data/jena_climate/${csv}`
   const fetched = await fetch(endpointURL)
-
+  
   // @see https://blog.logrocket.com/improve-error-handling-typescript-exhaustive-type-checking/
 }
 

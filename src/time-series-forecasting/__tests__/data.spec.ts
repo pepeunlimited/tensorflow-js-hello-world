@@ -2,7 +2,7 @@
 // @see https://jestjs.io/docs/api
 
 import * as fs from 'node:fs/promises'
-import { csv, csv_path, readLocal, rmLocal, accessLocal } from '../data'
+import { csv, csv_path, readLocal, rmLocal, accessLocal, fetchExternal } from '../data'
 
 // MARK: Utility functions for testing
 
@@ -52,5 +52,12 @@ describe('Data.ts', () => {
       // TODO: write mock
     })
   })
-  describe('fetchExternal', () => {})
+  describe('fetchExternal', () => {
+    beforeEach(async () => {
+      await rmLocal()
+    })
+    it('should be downloaded', async () => {
+      await fetchExternal()      
+    })
+  })
 })
