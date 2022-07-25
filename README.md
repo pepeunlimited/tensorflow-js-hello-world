@@ -49,6 +49,8 @@ devDependencies
     - [`[Feature]: esm/cjs autodetection for TypeScript files #12800`](https://github.com/facebook/jest/issues/12800)  
     - [`Meta: Native support for ES Modules #9430`](https://github.com/facebook/jest/issues/9430)  
     - [`Migration to ES Modules #6520`](https://github.com/facebook/docusaurus/issues/6520)  
+- [`prettier`](https://prettier.io/docs/en/options.html)    
+- [`eslint`](https://eslint.org/)
 
 Links
 -----
