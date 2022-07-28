@@ -57,7 +57,8 @@ describe('Data.ts', () => {
       await rmLocal()
     })
     it('should be downloaded', async () => {
-      await fetchExternal()      
-    })
+      // TODO: read response stream
+      await fetchExternal()
+    }, 60*1000)
   })
 })
