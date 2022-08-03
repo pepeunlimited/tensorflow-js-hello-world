@@ -1,5 +1,10 @@
-// @see https://blog.logrocket.com/testing-typescript-apps-using-jest/
-// @see https://jestjs.io/docs/api
+//
+//  Copyright 2022 Pepe Unlimited
+//  Licensed under the MIT license, see associated LICENSE file for terms.
+//  See AUTHORS file for the list of project authors.
+//
+//  @see https://blog.logrocket.com/testing-typescript-apps-using-jest/
+//  @see https://jestjs.io/docs/api
 
 import * as fs from 'node:fs/promises'
 import { csv, csv_path, readLocal, rmLocal, accessLocal, fetchExternal } from '../data'

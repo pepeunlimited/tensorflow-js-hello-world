@@ -1,3 +1,9 @@
+//
+//  Copyright 2022 Pepe Unlimited
+//  Licensed under the MIT license, see associated LICENSE file for terms.
+//  See AUTHORS file for the list of project authors.
+//
+
 import { Run as DataNode_Run } from './data-node/train.js'
 // import { Run as Graph_Run } from './tf_graph'
 // import { Run as HelloWorld_Run } from './tf_hello_world'
