@@ -7,7 +7,7 @@
 //  @see https://jestjs.io/docs/api
 
 import * as fs from 'node:fs/promises'
-import { csv, csv_path, readLocal, rmLocal, accessLocal, fetchExternal } from '../data'
+import { csv, csv_path, readLocal, rmLocal, accessLocal, fetchExternal, saveExternal } from '../data'
 
 // MARK: Utility functions for testing
 
@@ -26,13 +26,13 @@ describe('Data.ts', () => {
       // create tmp file for readLocal
       await fs.writeFile(`${csv_path}/${csv}`, 'Hello, World!')
       const r1 = await readLocal()
-      expect(r1.ok).toBe(true)
+      expect(r1.isOk()).toBe(true)
     })
     it('should not be loaded', async () => {
       // create tmp file for readLocal
       const r1 = await readLocal()
-      expect(r1.err).toBe(true)
-      expect(r1.val).toBe('CSV_ENOENT')
+      expect(r1.isErr()).toBe(true)
+      expect(r1.unwrapErr()).toBe('CSV_ENOENT')
     })
     it('should be unexpected error', async () => {
       // TODO: write mock
@@ -43,15 +43,15 @@ describe('Data.ts', () => {
       // create tmp file for readLocal
       await fs.writeFile(`${csv_path}/${csv}`, 'Hello, World!')
       const r1 = await rmLocal()
-      expect(r1.ok).toBe(true)
+      expect(r1.isOk()).toBe(true)
       const r2 = await accessLocal()
-      expect(r2.err).toBe(true)
-      expect(r2.val).toBe('CSV_ENOENT')
+      expect(r2.isErr()).toBe(true)
+      expect(r2.unwrapErr()).toBe('CSV_ENOENT')
     })
     it('should not be deleted', async () => {
       const r1 = await rmLocal()
-      expect(r1.err).toBe(true)
-      expect(r1.val).toBe('CSV_ENOENT')
+      expect(r1.isErr()).toBe(true)
+      expect(r1.unwrapErr()).toBe('CSV_ENOENT')
     })
     it('should be unexpected error', async () => {
       // TODO: write mock
@@ -63,7 +63,8 @@ describe('Data.ts', () => {
     })
     it('should be downloaded', async () => {
       // TODO: read response stream
-      await fetchExternal()
+      let bytes = (await fetchExternal()).unwrap().body
+      await saveExternal(bytes!)
     }, 60*1000)
   })
 })

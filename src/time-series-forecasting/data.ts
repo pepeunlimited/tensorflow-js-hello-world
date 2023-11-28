@@ -9,7 +9,7 @@ import * as fsp from 'node:fs/promises'
 import * as fs from 'node:fs'
 import { Transform } from 'node:stream'
 import { pipeline } from 'node:stream/promises'
-import { Ok, Err, Result } from 'ts-results'
+import { Ok, Err, Result } from 'ts-results-es'
 import { PanicError } from './panic_error.js'
 
 // filename for the weather csv data
@@ -122,39 +122,39 @@ const accessLocal = async (): Promise<Result<void, CSVError>> => {
 const Dataset = async (): Promise<Result<string | Buffer, CSVError>> => {
   // check if the .csv exists, if not download it from given URL
   const local = await readLocal()
-  if (local.ok) {
+  if (local.isOk()) {
     // return local bytes
-    return Ok(local.val)
+    return Ok(local.value)
   }
-  switch (local.val) {
+  switch (local.error) {
     case 'CSV_ENOENT':
       // download .csv from the internet & save
       const external = await fetchExternal()
-      if (external.ok) {
-        const saved = await saveExternal(external.val.body)
-        if (saved.err) {
+      if (external.isOk()) {
+        const saved = await saveExternal(external.value.body!)
+        if (saved.isErr()) {
           // check the error from saveExternal
-          switch (saved.val) {
+          switch (saved.error) {
             default:
-              throw new PanicError(saved.val)
+              throw new PanicError(saved.error)
           }
         }
         // read saved local .csv
         const savedLocal = await readLocal()
         // check the error from savedLocal
-        if (savedLocal.err) {
-          throw new PanicError(savedLocal.val)
+        if (savedLocal.isErr()) {
+          throw new PanicError(savedLocal.error)
         }
         // return savedLocal bytes
-        return Ok(savedLocal.val)
+        return Ok(savedLocal.value)
       }
       // check the error from fetchExternal
-      switch (external.val) {
+      switch (external.error) {
         default:
-          throw new PanicError(external.val)
+          throw new PanicError(external.error)
       }
     default:
-      throw new PanicError(local.val)
+      throw new PanicError(local.error)
   }
 }
 
@@ -162,6 +162,7 @@ export {
   Dataset,
   readLocal,
   fetchExternal,
+  saveExternal,
   rmLocal,
   csv,
   csv_path,

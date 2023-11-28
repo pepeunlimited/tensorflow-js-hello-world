@@ -33,7 +33,7 @@ Dependencies
 ------------
 
 - [`TensorFlow.js`](https://www.tensorflow.org/js)  
-- [`ts-results`](https://github.com/vultix/ts-results)  
+- [`ts-results-es`](https://github.com/lune-climate/ts-results-es)
   - `rust` and `swift` like result check for `.success` and `.failure` cases.
 - [`tslib`](https://www.npmjs.com/package/tslib)
   - [`tslib is required dependency in ts-results #32`](https://github.com/vultix/ts-results/issues/32)
