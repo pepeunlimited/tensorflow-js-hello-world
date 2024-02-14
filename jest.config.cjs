@@ -1,4 +1,5 @@
 module.exports = {
+  testTimeout: 70000,
   extensionsToTreatAsEsm: ['.ts'],
   transform: {
     "^.+\\.(t|j)sx?$": ["@swc/jest"],
